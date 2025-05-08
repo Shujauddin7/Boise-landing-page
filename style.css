@@ -20,7 +20,7 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 1.5rem;
 }
 
 section {
@@ -195,7 +195,7 @@ nav {
   border: 1px solid rgba(218, 165, 32, 0.3);
 }
 
-.hero h2 {
+.hero h3 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
@@ -240,11 +240,6 @@ nav {
 
 .cta-section {
   margin-top: 2rem;
-}
-
-.cta-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
 }
 
 .cta-section p {
@@ -839,14 +834,11 @@ input:focus, textarea:focus {
 
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .hero h2 {
+  .hero h3 {
     font-size: 2rem;
   }
   .section-title {
     font-size: 2rem;
-  }
-  .cta-section h2 {
-    font-size: 1.8rem;
   }
   .cta-section p {
     font-size: 1rem;
@@ -884,7 +876,7 @@ input:focus, textarea:focus {
     display: block;
     z-index: 1001;
   }
-  .hero h2 {
+  .hero h3 {
     font-size: 1.8rem;
   }
   .subtitle {
@@ -909,7 +901,7 @@ input:focus, textarea:focus {
   .hero-content {
     padding: 1.5rem;
   }
-  .hero h2 {
+  .hero h3 {
     font-size: 1.5rem;
   }
   .section-title {
@@ -927,7 +919,7 @@ input:focus, textarea:focus {
   .amount {
     font-size: 3rem;
   }
-  .input, textarea {
+  input, textarea {
     font-size: 0.9rem;
     padding: 0.8rem;
   }

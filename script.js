@@ -1,58 +1,59 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
-  navToggle.addEventListener('click', () => {
+
+  navToggle.addEventListener('click', function() {
     navMenu.classList.toggle('active');
+    navToggle.classList.toggle('active');
   });
 
-  // Popup form handling
+  window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Close popup when clicking outside of it
   const popup = document.getElementById('popup-form');
-  const openPopupBtns = document.querySelectorAll('.open-popup');
-  const closePopupBtn = document.querySelector('.close-btn');
+  const closeBtn = document.querySelector('.close-btn');
 
-  openPopupBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      popup.classList.add('active');
-    });
-  });
-
-  closePopupBtn.addEventListener('click', () => {
+  closeBtn.addEventListener('click', function() {
     popup.classList.remove('active');
   });
 
-  // Close popup when clicking outside the form
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) {
+  window.addEventListener('click', function(event) {
+    if (event.target === popup) {
       popup.classList.remove('active');
     }
   });
 
-  // Back to top button
-  const backToTop = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
+  // Open popup when clicking on "Discuss your needs" button
+  const openPopupButtons = document.querySelectorAll('.open-popup');
+  openPopupButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      popup.classList.add('active');
+    });
+  });
+
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', function() {
     if (window.scrollY > 300) {
-      backToTop.style.display = 'block';
+      backToTopButton.style.display = 'flex';
     } else {
-      backToTop.style.display = 'none';
+      backToTopButton.style.display = 'none';
     }
   });
 
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // Form submission handling
-  const forms = document.querySelectorAll('#contact-form, #popup-contact-form');
-  forms.forEach(form => {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert("Thank you! Your message has been sent successfully.");
-      this.reset();
-      if (this.id === 'popup-contact-form') {
-        popup.classList.remove('active');
-      }
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
   });
 });
