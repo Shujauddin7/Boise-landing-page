@@ -32,6 +32,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.2;
+  overflow-wrap: break-word; /* Prevent text overlap */
+}
+
+p {
+  overflow-wrap: break-word; /* Prevent text overlap */
 }
 
 .section-title {
@@ -144,7 +149,6 @@ nav {
 }
 
 /* Hero Section */
-/* Hero Section */
 .hero {
   height: 100vh;
   background: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
@@ -191,8 +195,8 @@ nav {
   border: 1px solid rgba(218, 165, 32, 0.3);
 }
 
-.hero h1 {
-  font-size: 3rem;
+.hero h2 {
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
   color: #fff;
@@ -234,12 +238,18 @@ nav {
   border: 1px solid rgba(255, 59, 48, 0.3);
 }
 
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.cta-section {
   margin-top: 2rem;
-  flex-wrap: wrap;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .btn {
@@ -334,73 +344,9 @@ nav {
   }
 }
 
-/* Preview Section */
-.preview-section {
+/* Benefits Section */
+.benefits-section {
   background: #161b22;
-}
-
-.device-mockup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 4rem;
-  flex-wrap: wrap;
-}
-
-.laptop-mockup {
-  width: 100%;
-  max-width: 700px;
-  position: relative;
-}
-
-.laptop-mockup .screen {
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
-  background: #000;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.laptop-mockup .screen img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.phone-mockup {
-  width: 100%;
-  max-width: 200px;
-  position: relative;
-}
-
-.phone-mockup .screen {
-  width: 100%;
-  padding-top: 177.78%; /* 9:16 aspect ratio */
-  background: #000;
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.phone-mockup .screen img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Features Section */
-.features-section {
-  background: #0f1216;
 }
 
 .cards {
@@ -442,57 +388,9 @@ nav {
   color: #b3b3b3;
 }
 
-/* Testimonial Section */
-.testimonial-section {
-  background: #161b22;
-  padding: 5rem  babysit0;
-}
-
-.testimonial {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.quote {
+/* Features Section */
+.features-section {
   background: #0f1216;
-  padding: 3rem;
-  border-radius: 8px;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.quote i {
-  font-size: 2rem;
-  color: rgba(218, 165, 32, 0.3);
-  margin-bottom: 1rem;
-}
-
-.quote p {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: #f1f1f1;
-  margin-bottom: 2rem;
-  font-style: italic;
-}
-
-.client {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.client-info h4 {
-  font-size: 1.2rem;
-  color: #daa520;
-}
-
-.client-info p {
-  font-size: 0.9rem;
-  margin: 0;
-  color: #b3b3b3;
-  font-style: normal;
 }
 
 /* Buy Section */
@@ -684,18 +582,7 @@ input, textarea {
   transition: all 0.3s ease;
 }
 
-input[type="datetime-local"] {
-  width: 100%;
-  padding: 1rem;
-  background: #161b22;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus, input[type="datetime-local"]:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: rgba(218, 165, 32, 0.5);
   box-shadow: 0 0 0 2px rgba(218, 165, 32, 0.2);
@@ -762,8 +649,79 @@ footer .disclaimer {
   color: #555;
 }
 
+/* Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup.active {
+  display: flex;
+}
+
+.popup-content {
+  background: #161b22;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.popup-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.popup-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #b3b3b3;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  background: #daa520;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+  background: #c69500;
+  transform: translateY(-3px);
+}
+
 /* Animations and Hover Effects */
-/* Button Hover Pulse Effect */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(218, 165, 32, 0.7);
@@ -793,12 +751,7 @@ footer .disclaimer {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
   transition: all 0.6s ease;
 }
 
@@ -806,7 +759,6 @@ footer .disclaimer {
   left: 100%;
 }
 
-/* Card Hover Effect */
 .card::before {
   content: '';
   position: absolute;
@@ -831,17 +783,15 @@ footer .disclaimer {
   opacity: 1;
 }
 
-/* Form Focus Animation */
-input, textarea, input[type="datetime-local"] {
+input, textarea {
   position: relative;
   transition: all 0.3s ease;
 }
 
-input:focus, textarea:focus, input[type="datetime-local"]:focus {
+input:focus, textarea:focus {
   transform: translateY(-2px);
 }
 
-/* Navigation Animation */
 .nav-menu a {
   transition: all 0.3s ease;
 }
@@ -850,7 +800,6 @@ input:focus, textarea:focus, input[type="datetime-local"]:focus {
   transform: translateY(-2px);
 }
 
-/* Contact Button Animation */
 .contact-btn {
   position: relative;
   transition: all 0.3s ease;
@@ -872,7 +821,10 @@ input:focus, textarea:focus, input[type="datetime-local"]:focus {
   width: 100%;
 }
 
-/* Price Highlight Animation */
+.price-tag .pints {
+  animation: highlight 2s infinite;
+}
+
 @keyframes highlight {
   0% {
     transform: scale(1);
@@ -885,29 +837,20 @@ input:focus, textarea:focus, input[type="datetime-local"]:focus {
   }
 }
 
-.price-tag .current {
-  animation: highlight 2s infinite;
-}
-
 /* Responsive Styles */
 @media (max-width: 992px) {
-  .hero h1 {
-    font-size: 2.5rem;
+  .hero h2 {
+    font-size: 2rem;
   }
-  
   .section-title {
     font-size: 2rem;
   }
-  
-  .device-mockup {
-    flex-direction: column;
+  .cta-section h2 {
+    font-size: 1.8rem;
   }
-  
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
+  .cta-section p {
+    font-size: 1rem;
   }
-  
   .btn {
     width: 100%;
     max-width: 300px;
@@ -931,45 +874,29 @@ input:focus, textarea:focus, input[type="datetime-local"]:focus {
     z-index: 1000;
     padding: 2rem;
   }
-  
   .nav-menu.active {
     right: 0;
   }
-  
   .nav-menu li {
     margin: 1.5rem 0;
   }
-  
   .nav-toggle {
     display: block;
     z-index: 1001;
   }
-  
-  .hero h1 {
-    font-size: 2rem;
+  .hero h2 {
+    font-size: 1.8rem;
   }
-  
   .subtitle {
     font-size: 1.1rem;
   }
-  
-  .cta-buttons {
-    flex-direction: column;
-  }
-  
-  .btn {
-    width: 100%;
-  }
-  
   .price-tag {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
   .card {
     min-height: auto;
   }
-  
   .contact-container {
     flex-direction: column;
   }
@@ -979,37 +906,42 @@ input:focus, textarea:focus, input[type="datetime-local"]:focus {
   .hero {
     padding: 1rem;
   }
-  
   .hero-content {
     padding: 1.5rem;
   }
-  
-  .hero h1 {
-    font-size: 1.8rem;
+  .hero h2 {
+    font-size: 1.5rem;
   }
-  
   .section-title {
     font-size: 1.8rem;
   }
-  
   .section {
     padding: 4rem 0;
   }
-  
   .price-header {
     padding: 1.5rem;
   }
-  
   .price-features, .price-cta {
     padding: 1.5rem;
   }
-  
   .amount {
     font-size: 3rem;
   }
-  
-  input[type="datetime-local"] {
+  .input, textarea {
     font-size: 0.9rem;
     padding: 0.8rem;
   }
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cta-buttons .btn {
+  margin: 0;
+  white-space: nowrap;
 }
