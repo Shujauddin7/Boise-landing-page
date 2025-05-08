@@ -180,14 +180,14 @@
           <div class="contact-buttons">
             <a href="https://meet.google.com/" class="contact-btn"><i class="fas fa-video"></i> Schedule a Meet in Google Meet</a>
             <a href="https://wa.me/7892119416" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="mailto:youremail@example.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+            <a href="#" class="contact-btn open-popup"><i class="fas fa-envelope"></i> Email</a>
           </div>
         </div>
         <div class="contact-form-container">
           <h3>Send a Message:</h3>
           <form id="contact-form">
             <div class="form-group">
-              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="text" name="name" placeholder="Your Full Name" required />
             </div>
             <div class="form-group">
               <input type="email" name="email" placeholder="Your Email" required />
@@ -196,10 +196,24 @@
               <input type="tel" name="phone" placeholder="Your Phone" required />
             </div>
             <div class="form-group">
-              <textarea name="message" placeholder="Tell us about your business needs"></textarea>
+              <textarea name="message" placeholder="Your Message (Optional)"></textarea>
             </div>
             <button type="submit" class="btn btn-primary full-width"><i class="fas fa-paper-plane"></i> Send Message</button>
           </form>
+          
+          <!-- Success Message for Contact Form -->
+          <div id="contact-success-message" class="success-message" onclick="if(event.target === this) this.style.display='none';">
+            <i class="fas fa-check-circle"></i>
+            <p>Your message has been sent successfully! We will connect with you as soon as possible.</p>
+            <button class="btn btn-secondary close-message-btn" type="button" onclick="this.parentElement.style.display='none';">Close</button>
+          </div>
+
+          <!-- Error Message for Contact Form -->
+          <div id="contact-error-message" class="error-message" onclick="if(event.target === this) this.style.display='none';">
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Sorry, there was an error sending your message. Please try again.</p>
+            <button class="btn btn-secondary close-message-btn" type="button" onclick="this.parentElement.style.display='none';">Try Again</button>
+          </div>
         </div>
       </div>
     </div>
@@ -228,10 +242,10 @@
     <div class="popup-content">
       <span class="close-btn">&times;</span>
       <h2>Let's Get Started!</h2>
-      <p>Fill out the form below, and we'll be in touch to discuss your custom website.</p>
+      <p id="popup-description">Fill out the form below, and we'll be in touch to discuss your custom website.</p>
       <form id="popup-contact-form">
         <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="text" name="name" placeholder="Your Full Name" required />
         </div>
         <div class="form-group">
           <input type="email" name="email" placeholder="Your Email" required />
@@ -239,11 +253,34 @@
         <div class="form-group">
           <input type="tel" name="phone" placeholder="Your Phone" required />
         </div>
+        <!-- Date and time fields will only show for Google Meet requests -->
+        <div class="form-group meet-fields" style="display: none;">
+          <label for="preferred-date">Preferred Date for Google Meet:</label>
+          <input type="date" name="preferred-date" id="preferred-date" min="" />
+        </div>
+        <div class="form-group meet-fields" style="display: none;">
+          <label for="preferred-time">Preferred Time:</label>
+          <input type="time" name="preferred-time" id="preferred-time" />
+        </div>
         <div class="form-group">
-          <textarea name="message" placeholder="Tell us about your business needs (optional)"></textarea>
+          <textarea name="message" placeholder="Your Message (Optional)"></textarea>
         </div>
         <button type="submit" class="btn btn-primary full-width"><i class="fas fa-paper-plane"></i> Send Message</button>
       </form>
+
+      <!-- Success Message -->
+      <div id="success-message" class="success-message" onclick="if(event.target === this) this.style.display='none';">
+        <i class="fas fa-check-circle"></i>
+        <p>Your message has been sent successfully! We will connect with you as soon as possible.</p>
+        <button class="btn btn-secondary close-message-btn" type="button" onclick="this.parentElement.style.display='none';if(this.parentElement.id==='success-message'){document.getElementById('popup-form').classList.remove('active');document.body.style.overflow='';}">Close</button>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error-message" class="error-message" onclick="if(event.target === this) this.style.display='none';">
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Sorry, there was an error sending your message. Please try again.</p>
+        <button class="btn btn-secondary close-message-btn" type="button" onclick="this.parentElement.style.display='none';">Try Again</button>
+      </div>
     </div>
   </div>
 
